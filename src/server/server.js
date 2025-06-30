@@ -9,6 +9,15 @@ app.use(express.json());
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../client")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client", "index.html"));
+});
 
 app.post("/api/prompt", async (req, res) => {
   const prompt = req.body.prompt;

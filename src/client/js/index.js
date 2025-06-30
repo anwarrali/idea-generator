@@ -43,7 +43,7 @@ Make sure the steps are clear, ordered, and include which technology/tool is use
 `;
 
   try {
-    const response = await fetch('http://localhost:3000/api/prompt', {
+    const response = await fetch('https://idea-generator-i2z3.onrender.com/api/prompt', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt })

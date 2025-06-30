@@ -2,10 +2,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
+  background: #ecb1001b !important;
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
+}
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
@@ -65,7 +71,6 @@ header .brand img {
   border: 1px solid #ecb200;
   border-radius: 40px;
   font-size: 12px;
-
 }
 
 .choice a:hover {
@@ -75,14 +80,12 @@ header .brand img {
   box-shadow: 1px 1px 5px #ecb200;
 }
 
-/*النتائج*/
 .gen {
-  width: 90%;
-  margin: 100px auto 40px;
+  width: 95%;
+  margin: 100px 40px;
   padding: 20px;
-  background: #fff;
   border-radius: 12px;
-  margin-top: 120px;
+  margin-top: 30px;
 }
 
 .gen h1,
@@ -96,7 +99,6 @@ header .brand img {
   margin-top: 20px;
 }
 
-/* ========== Checkbox Group ========== */
 .checkbox-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -162,7 +164,6 @@ label input[type="checkbox"]:checked + .checkmark::after {
   opacity: 1;
 }
 
-/* ========== Radio Buttons ========== */
 .level-group {
   display: flex;
   justify-content: center;
@@ -171,12 +172,10 @@ label input[type="checkbox"]:checked + .checkmark::after {
   flex-wrap: wrap;
 }
 
-/* إخفاء الراديو الأصلي */
 .level-group input[type="radio"] {
   display: none;
 }
 
-/* شكل الزر */
 .radio-btn {
   background-color: #444;
   color: #ecb200;
@@ -189,7 +188,6 @@ label input[type="checkbox"]:checked + .checkmark::after {
   user-select: none;
 }
 
-/* عند المرور */
 .radio-btn:hover {
   background-color: #ecb200;
   color: black;
@@ -197,7 +195,6 @@ label input[type="checkbox"]:checked + .checkmark::after {
   box-shadow: 0 2px 5px #ecb200;
 }
 
-/* الزر المحدد (عند ضغط المستخدم) */
 .level-group input[type="radio"]:checked + .radio-btn {
   background-color: #ecb200;
   color: black;
@@ -205,7 +202,6 @@ label input[type="checkbox"]:checked + .checkmark::after {
   transform: scale(0.95);
 }
 
-/* ========== زر التوليد ========== */
 form button[type="submit"] {
   display: block;
   margin: 30px auto 10px;
@@ -232,7 +228,6 @@ h3 {
   padding-top: 20px;
 }
 
-/* ========== النتائج ========== */
 .results {
   margin-top: 30px;
   opacity: 0;
@@ -251,11 +246,11 @@ h3 {
 
 .results h3 {
   margin-top: 20px;
-  color: #222;
+  color: #333;
 }
 
 .results .border {
-  background: #ecb100a5 !important;
+  background: #ecb100 !important;
   border: none !important;
   box-shadow: #22222258 2px 1px 5px;
   padding: 20px;
@@ -263,7 +258,6 @@ h3 {
   margin: 10px;
 }
 
-/* ========== الفوتر ========== */
 footer {
   background: #222;
   color: #ecb200;
@@ -292,19 +286,29 @@ footer p::before {
 
 @media (max-width: 600px) {
   header {
-    flex-direction: column; /* ترتيب عمودي */
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 15px 10px;
+    text-align: center;
   }
 
   header .brand {
     justify-content: center;
-    width: 100%;
+    padding-left: 0;
     margin-bottom: 10px;
   }
 
   header .choice {
     justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    padding-right: 0;
+    gap: 10px;
+  }
+
+  header .choice a {
+    margin: 5px 0;
+    font-size: 13px;
+    padding: 6px 14px;
   }
 }

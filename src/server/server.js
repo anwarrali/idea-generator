@@ -11,9 +11,7 @@ app.use(express.json());
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
+
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.get("/*", (req, res) => {

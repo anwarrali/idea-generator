@@ -16,7 +16,7 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client", "index.html"), (err) => {
+  res.sendFile(path.join(__dirname, "../client/views", "index.html"), (err) => {
     if (err) {
       console.error("Error sending index.html:", err);
       res.status(500).send("Error loading page");

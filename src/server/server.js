@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const OpenAI = require("openai");
@@ -14,16 +15,6 @@ app.get("/", (req, res) => {
 });
 const path = require("path");
 app.use(express.static(path.join(__dirname, "../client")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/views", "index.html"), (err) => {
-    if (err) {
-      console.error("Error sending index.html:", err);
-      res.status(500).send("Error loading page");
-    }
-  });
-});
-
 
 app.post("/api/prompt", async (req, res) => {
   const prompt = req.body.prompt;

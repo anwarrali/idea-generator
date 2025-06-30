@@ -35,6 +35,7 @@ header .brand {
   gap: 10px;
   color: #ecb200;
   font-weight: bold;
+  padding-left: 20px;
 }
 
 header .brand sub {
@@ -52,6 +53,7 @@ header .brand img {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  padding-right: 20px;
 }
 
 .choice a {
@@ -254,6 +256,7 @@ h3 {
   background: #ecb100a5 !important;
   border: none !important;
   box-shadow: #22222258 2px 1px 5px;
+  padding: 20px;
 }
 
 /* ========== الفوتر ========== */

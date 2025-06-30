@@ -63,11 +63,13 @@ header .brand img {
   text-decoration: none;
   font-weight: bold;
   padding: 6px 12px;
+  padding-right: 20px;
   transition: all 0.3s ease;
   background-color: #333;
   border: 1px solid #ecb200;
   border-radius: 40px;
   font-size: 12px;
+
 }
 
 .choice a:hover {
@@ -260,6 +262,7 @@ h3 {
   border: none !important;
   box-shadow: #22222258 2px 1px 5px;
   padding: 20px;
+  border-radius: 20px !important;
   margin: 10px;
 }
 

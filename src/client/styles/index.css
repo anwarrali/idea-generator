@@ -5,8 +5,8 @@ body {
   background: #f9f9f9;
   color: #333;
   line-height: 1.6;
-  width: 100dvw;
-  height: 100dvh;
+  overflow-x: hidden;
+  padding-top: 80px;
 }
 
 header {
@@ -86,6 +86,7 @@ header .brand img {
   padding: 20px;
   background: #fff;
   border-radius: 12px;
+  margin-top: 120px;
 }
 
 .gen h1,

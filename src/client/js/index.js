@@ -36,6 +36,8 @@
 
       Make sure the steps are clear, ordered, and include which technology/tool is used at each stage. Return **only** valid JSON without explanation.
       `;
+      console.log("Show loader");
+    document.getElementById("loadingIndicatorAnalyze").style.display = "block";
 
     try {
       const response = await fetch(
@@ -104,6 +106,8 @@
         li.textContent = p;
         planList.appendChild(li);
       });
+       document.getElementById("loadingIndicatorAnalyze").style.display = "none";
+
       // عرض النتائج
       const resultsDiv = document.querySelector(".results");
       resultsDiv.classList.add("show");
@@ -114,7 +118,12 @@
       });
     } catch (error) {
       console.error("Error:", error);
+
     }
+    finally {
+      document.getElementById("loadingIndicatorAnalyze").style.display = "none";
+    }
+
   }
     const fieldsForm = document.getElementById("fieldsForm");
   if (fieldsForm) {

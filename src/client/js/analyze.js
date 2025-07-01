@@ -13,7 +13,7 @@ if (ideaForm) {
 
     const prompt = `I have an idea: ${idea}. Description: ${description}. Please generate a project title, requirements (functional, non-functional), technologies, and a step-by-step plan in JSON format. Return only valid JSON without any explanation.`;
     console.log("Prompt sent to server:", prompt);
-
+    document.getElementById("loadingIndicatorAnalyze").style.display = "block";
     try {
       const response = await fetch(
         "https://idea-generator-i2z3.onrender.com/api/analyze",
@@ -56,9 +56,13 @@ if (ideaForm) {
       document.getElementById("ideaPlan").innerHTML = (result.plan || [])
         .map((step) => `<li>${step}</li>`)
         .join("");
+        document.getElementById("loadingIndicatorAnalyze").style.display = "none";
+
     } catch (err) {
       alert("Error generating idea: " + err.message);
       console.error("Fetch error:", err);
+    }finally {
+      document.getElementById("loadingIndicatorAnalyze").style.display = "none";
     }
   });
 }

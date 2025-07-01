@@ -22,7 +22,12 @@
     <article>
         <div class="gen">
             <div class="getData">
-                <h1></h1>
+                <div id="loadingIndicatorIndex" style="display:none; text-align:center; margin:20px;">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Generating idea, please wait...</p>
+                </div>
                 <form id="fieldsForm">
                 <h2>Select Technology Fields</h2>
                 <div class="checkbox-group">
@@ -201,7 +206,14 @@
 
 
                 <button type="submit">Generate Idea</button>
+                <div id="loadingIndicatorAnalyze" style="display:none; text-align:center; margin:20px;">
+                <div class="loader" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Generating idea, please wait...</p>
+                </div>
                 </form>
+
 
             </div>
             <div class="results" id="resultsSection">

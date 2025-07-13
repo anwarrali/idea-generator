@@ -2,37 +2,34 @@
 async function sendPrompt(event) {
   event.preventDefault();
 
-  const checkboxes = document.querySelectorAll(
-    'input[type="checkbox"]:checked'
-  );
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
   const selectedFields = Array.from(checkboxes).map((cb) => cb.value);
 
   const level = document.querySelector('input[name="ideaLevel"]:checked').value;
 
   const prompt = `
-      I want a ${level} project idea in the following fields: ${selectedFields.join(
-    ", "
-  )}.
+    I want a ${level} project idea in the following fields: ${selectedFields.join(", ")}.
 
-      Please return a JSON object with the following structure:
-      {
-        "idea": "A clear and concise project idea.",
-        "requirements": {
-          "functional": ["List of specific features the system must provide"],
-          "non_functional": ["List of quality attributes, performance, security, scalability, etc."],
-          "skills_needed": ["Technologies or knowledge areas required to build it"]
-        },
-        "technologies": ["List of languages, frameworks, tools"],
-        "plan": [
-          "Step 1: Description (e.g., Analyze requirements)",
-          "Step 2: Description (e.g., Design system architecture)",
-          "Step 3: Description (e.g., Build frontend using React)...",
-          "Final Step: Complete testing and deployment"
-        ]
-      }
+    Please return a JSON object with the following structure:
+    {
+      "idea": "A clear and concise project idea.",
+      "requirements": {
+        "functional": ["List of specific features the system must provide"],
+        "non_functional": ["List of quality attributes, performance, security, scalability, etc."],
+        "skills_needed": ["Technologies or knowledge areas required to build it"]
+      },
+      "technologies": ["List of languages, frameworks, tools"],
+      "plan": [
+        "Step 1: Description (e.g., Analyze requirements)",
+        "Step 2: Description (e.g., Design system architecture)",
+        "Step 3: Description (e.g., Build frontend using React)...",
+        "Final Step: Complete testing and deployment"
+      ]
+    }
 
-      Make sure the steps are clear, ordered, and include which technology/tool is used at each stage. Return **only** valid JSON without explanation.
-      `;
+    Make sure the steps are clear, ordered, and include which technology/tool is used at each stage. Return **only** valid JSON without explanation.
+  `;
+
   console.log("Show loader");
   document.getElementById("loadingIndicatorAnalyze").style.display = "block";
 
@@ -48,11 +45,15 @@ async function sendPrompt(event) {
 
     const data = await response.json();
     let content = data.reply;
+    let parsed; 
+
     try {
       content = content.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(content);
+      parsed = JSON.parse(content);
     } catch (parseError) {
-      console.error("Failed to parse JSON:", content);
+      console.error("❌ Failed to parse JSON:", content);
+      alert("⚠️ The response was not valid JSON. Please try again.");
+      return; 
     }
 
     document.querySelector(".results").classList.add("show");
@@ -108,22 +109,20 @@ async function sendPrompt(event) {
       li.textContent = p;
       planList.appendChild(li);
     });
+
     document.getElementById("loadingIndicatorAnalyze").style.display = "none";
 
-    // عرض النتائج
-    const resultsDiv = document.querySelector(".results");
-    resultsDiv.classList.add("show");
-
-    // تمرير سلس للنتائج
+    // Scroll to results
     document.getElementById("resultsSection").scrollIntoView({
       behavior: "smooth",
     });
   } catch (error) {
-    console.error("Error:", error);
+    console.error("🔥 General Error:", error);
   } finally {
     document.getElementById("loadingIndicatorAnalyze").style.display = "none";
   }
 }
+
 const fieldsForm = document.getElementById("fieldsForm");
 if (fieldsForm) {
   fieldsForm.addEventListener("submit", sendPrompt);

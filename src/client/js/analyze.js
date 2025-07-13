@@ -16,7 +16,7 @@ if (ideaForm) {
     document.getElementById("loadingIndicatorAnalyze").style.display = "block";
     try {
       const response = await fetch(
-        "https://idea-generator-i2z3.onrender.com/api/analyze",
+        "https://idea-generator-production.up.railway.app/api/analyze",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,12 +56,11 @@ if (ideaForm) {
       document.getElementById("ideaPlan").innerHTML = (result.plan || [])
         .map((step) => `<li>${step}</li>`)
         .join("");
-        document.getElementById("loadingIndicatorAnalyze").style.display = "none";
-
+      document.getElementById("loadingIndicatorAnalyze").style.display = "none";
     } catch (err) {
       alert("Error generating idea: " + err.message);
       console.error("Fetch error:", err);
-    }finally {
+    } finally {
       document.getElementById("loadingIndicatorAnalyze").style.display = "none";
     }
   });

@@ -19,7 +19,7 @@
     />
   </head>
   <body>
-    <header data-aos="fade-up">
+    <header data-aos="fade-down">
       <div class="brand">
         <img src="../imgs/creativity.png" alt="logo" />
         <sub>Idea Generator.</sub>
@@ -31,7 +31,7 @@
     </header>
     <article data-aos="fade-up">
       <div class="gen">
-        <div class="getData">
+        <div class="getData" data-aos="">
           <div
             id="loadingIndicatorIndex"
             style="display: none; text-align: center; margin: 20px"
@@ -41,10 +41,10 @@
             </div>
             <p>Generating idea, please wait...</p>
           </div>
-          <form id="fieldsForm">
+          <form id="fieldsForm"  >
             <h2>Select Technology Fields</h2>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
+            <div class="checkbox-group" " data-aos="zoom-in" data-aos-delay="300">
+              <div class="checkbox-item" >
                 <label>
                   <input type="checkbox" value="Artificial Intelligence" />
                   <span class="checkmark"></span>
@@ -208,8 +208,8 @@
                 </label>
               </div>
             </div>
-            <h3>Select Idea Level:</h3>
-            <div class="level-group">
+            <h3 data-aos="zoom-in" >Select Idea Level:</h3>
+            <div class="level-group" data-aos="zoom-in" >
               <input
                 type="radio"
                 id="beginner"
@@ -290,7 +290,7 @@
         </div>
       </div>
     </article>
-    <footer class="text-center mt-5 py-4" data-aos="fade-up">
+    <footer class="text-center mt-5 py-4" >
       <p>
         Created with ❤️ by <strong>Anwar Roumanen</strong> <br />
         &copy; 2025 Idea Generator. All rights reserved.

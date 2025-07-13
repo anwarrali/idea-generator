@@ -7,6 +7,10 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(express.json());
+console.log(
+  "OPENAI_API_KEY (length):",
+  process.env.OPENAI_API_KEY?.length || "NOT SET"
+);
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

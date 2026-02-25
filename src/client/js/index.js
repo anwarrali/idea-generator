@@ -98,7 +98,7 @@ async function sendPrompt(event) {
   setLoading(true);
 
   try {
-    const API_URL = "http://localhost:3000"; // Hardcode for now to test
+    const API_URL = "https://idea-generator-i2z3.onrender.com"; // Hardcode for now to test
 
     const response = await fetch(`${API_URL}/api/prompt`, {
       method: "POST",

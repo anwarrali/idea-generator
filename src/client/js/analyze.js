@@ -25,7 +25,8 @@ if (ideaForm) {
     setLoading(true);
 
     try {
-      const API_URL = window.API_URL || "http://localhost:3000";
+      const API_URL =
+        window.API_URL || "https://idea-generator-i2z3.onrender.com";
 
       const response = await fetch(`${API_URL}/api/analyze`, {
         method: "POST",

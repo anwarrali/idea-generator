@@ -1,5 +1,16 @@
 const ideaForm = document.getElementById("ideaForm");
 if (ideaForm) {
+  // Add this at the VERY TOP of analyze.js
+  function setLoading(show) {
+    const loader = document.getElementById("loadingIndicatorAnalyze");
+    if (loader) {
+      loader.style.display = show ? "block" : "none";
+    }
+  }
+
+  // Your existing code continues...
+  const ideaForm = document.getElementById("ideaForm");
+  // ... etc
   ideaForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 

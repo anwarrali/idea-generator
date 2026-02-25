@@ -1,16 +1,57 @@
-const ideaForm = document.getElementById("ideaForm");
-if (ideaForm) {
-  // Add this at the VERY TOP of analyze.js
-  function setLoading(show) {
-    const loader = document.getElementById("loadingIndicatorAnalyze");
-    if (loader) {
-      loader.style.display = show ? "block" : "none";
-    }
+// ===== ALL HELPER FUNCTIONS (add these at the VERY TOP) =====
+function getElement(id) {
+  const el = document.getElementById(id);
+  if (!el) {
+    console.error(`Element not found: ${id}`);
+  }
+  return el;
+}
+
+function safeSetText(id, text) {
+  const el = getElement(id);
+  if (el) {
+    el.textContent = text || "";
+  }
+}
+
+function createSafeListItem(text) {
+  const li = document.createElement("li");
+  li.textContent = text;
+  return li;
+}
+
+function populateList(listId, items, title = null) {
+  const list = getElement(listId);
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  if (title) {
+    const titleEl = document.createElement("strong");
+    titleEl.textContent = title;
+    list.appendChild(titleEl);
   }
 
-  // Your existing code continues...
-  const ideaForm = document.getElementById("ideaForm");
-  // ... etc
+  if (Array.isArray(items)) {
+    items.forEach((item) => {
+      if (item && typeof item === "string") {
+        list.appendChild(createSafeListItem(item));
+      }
+    });
+  }
+}
+
+function setLoading(show) {
+  const loader = document.getElementById("loadingIndicatorAnalyze");
+  if (loader) {
+    loader.style.display = show ? "block" : "none";
+  }
+}
+// ===== END OF HELPER FUNCTIONS =====
+
+// Your existing code starts here
+const ideaForm = document.getElementById("ideaForm");
+if (ideaForm) {
   ideaForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -146,11 +187,3 @@ if (ideaForm) {
     }
   });
 }
-
-// Initialize form event listeners
-document.addEventListener("DOMContentLoaded", function () {
-  const fieldsForm = document.getElementById("fieldsForm");
-  if (fieldsForm) {
-    fieldsForm.addEventListener("submit", sendPrompt);
-  }
-});
